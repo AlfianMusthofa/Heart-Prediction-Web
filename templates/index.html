@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediksi Gagal Jantung</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+  <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-3xl">
+    <h1 class="text-3xl font-bold text-center text-red-600 mb-6">
+      Prediksi Gagal Jantung
+    </h1>
+
+    <!-- FORM -->
+    <form method="POST" class="grid grid-cols-2 gap-4">
+
+      <input name="Age" type="number" placeholder="Age" required class="border p-2 rounded">
+
+      <select name="Sex" required class="border p-2 rounded">
+        <option value="">Sex</option>
+        <option value="M">Laki-laki</option>
+        <option value="F">Perempuan</option>
+      </select>
+
+      <select name="ChestPainType" required class="border p-2 rounded">
+        <option value="">ChestPainType</option>
+        <option value="ATA">ATA</option>
+        <option value="NAP">NAP</option>
+        <option value="ASY">ASY</option>
+        <option value="TA">TA</option>
+      </select>
+
+      <input name="RestingBP" type="number" placeholder="RestingBP" required class="border p-2 rounded">
+
+      <input name="Cholesterol" type="number" placeholder="Kolesterol" required class="border p-2 rounded">
+
+      <select name="FastingBS" required class="border p-2 rounded">
+        <option value="">FastingBS</option>
+        <option value="0">0 (Normal)</option>
+        <option value="1">1 (Diatas Normal)</option>
+      </select>
+
+      <select name="RestingECG" required class="border p-2 rounded">
+        <option value="">RestingECG</option>
+        <option value="Normal">Normal</option>
+        <option value="ST">ST</option>
+        <option value="LVH">LVH</option>
+      </select>
+
+      <input name="MaxHR" type="number" placeholder="MaxHR" required class="border p-2 rounded">
+
+      <select name="ExerciseAngina" required class="border p-2 rounded">
+        <option value="">ExerciseAngina</option>
+        <option value="Y">Ya</option>
+        <option value="N">Tidak</option>
+      </select>
+
+      <input name="Oldpeak" type="number" step="0.1" placeholder="Oldpeak" required class="border p-2 rounded">
+
+      <select name="ST_Slope" required class="border p-2 rounded">
+        <option value="">ST_Slope</option>
+        <option value="Up">Up</option>
+        <option value="Flat">Flat</option>
+        <option value="Down">Down</option>
+      </select>
+
+      <button class="col-span-2 bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">
+        Prediksi Sekarang
+      </button>
+    </form>
+
+    <!-- OUTPUT RESULT -->
+    {% if prediction %}
+      <div class="mt-6 p-4 rounded-lg text-center text-lg font-semibold
+          {% if 'Tidak' in prediction %}
+              bg-green-100 text-green-700
+          {% else %}
+              bg-red-100 text-red-700
+          {% endif %}">
+        {{ prediction }}
+      </div>
+    {% endif %}
+
+  </div>
+</body>
+</html>
